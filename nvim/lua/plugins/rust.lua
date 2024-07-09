@@ -1,5 +1,4 @@
 return {
-
   -- Extend auto completion
   {
     "hrsh7th/nvim-cmp",
@@ -49,6 +48,7 @@ return {
     opts = {
       server = {
         on_attach = function(client, bufnr)
+          vim.lsp.inlay_hint.enable(bufnr, true)
           -- register which-key mappings
           local wk = require("which-key")
           wk.register({
@@ -101,6 +101,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = { enabled = true },
       servers = {
         rust_analyzer = {},
         taplo = {
